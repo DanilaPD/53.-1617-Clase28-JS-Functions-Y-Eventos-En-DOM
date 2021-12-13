@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300&family=Permanent+Marker&display=swap");
 @font-face {
   font-family: fontAwesome;
-  src: url("./Assets/fa-solid-900.ttf")
+  src: url("./Assets/fa-solid-900.ttf");
 }
 
 * {
@@ -13,7 +13,7 @@ body {
   font-family: "Outfit", sans-serif;
   padding: 2%;
   height: 100vh;
-  background-image: url(./background.jpg);
+  background-image: url(./Assets/background.jpg);
   background-size: cover;
   overflow: hidden;
 }
@@ -53,5 +53,89 @@ main button:hover {
   cursor: pointer;
   background-color: #ffa2b2;
   border: #ffa2b2 2px solid;
+}
+
+main button.add::before {
+  font-family: "fontAwesome";
+  content: "\f055";
+}
+
+main button.edit::before {
+  font-family: "fontAwesome";
+  content: "\f044";
+}
+
+main button.scrap::before {
+  font-family: "fontAwesome";
+  content: "\f058";
+}
+
+main button.erase::before {
+  font-family: "fontAwesome";
+  content: "\f12d";
+}
+
+main button.save::before {
+  font-family: "fontAwesome";
+  content: "\f0c7";
+}
+
+main button.notDone::before {
+  font-family: "fontAwesome";
+  content: "\f057";
+}
+
+main input {
+  width: 60%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: #f9f3ed;
+  border: #8cb6a6 2px solid;
+  margin-bottom: 1%;
+}
+
+main .emptyAlert {
+  padding: 2%;
+}
+
+main .hidden {
+  visibility: hidden;
+}
+
+main .tasksSection {
+  margin-top: 5%;
+}
+
+main .tasksSection .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+main .tasksSection .taskInput {
+  color: grey;
+  cursor: auto;
+}
+
+main .tasksSection .taskInput:not(:-moz-read-only) {
+  cursor: text;
+  color: #8cb6a6;
+  font-weight: 800;
+}
+
+main .tasksSection .taskInput:not(:read-only) {
+  cursor: text;
+  color: #8cb6a6;
+  font-weight: 800;
+}
+
+main .tasksSection .taskInput.done {
+  text-decoration: line-through;
+}
+
+main .tasksSection .btns {
+  width: 30%;
 }
 /*# sourceMappingURL=style.css.map */
