@@ -14,11 +14,11 @@ const tasksList = document.getElementById("tasks");
 form.addEventListener("submit", (e) => {
   // Evitamos que el "form" sea "submiteado" al apretar el botón, que es el comportamiento por default de los botones.
   e.preventDefault();
-  console.log("No refrescó.");
+  //* console.log("No refrescó.");
 
   // Vamos a agarrar el valor del "form":
   const task = newTask.value;
-  console.log(task);
+  //* console.log(task);
 
   // Si el valor de "task" no existe:
   if (!task) {
@@ -72,19 +72,46 @@ form.addEventListener("submit", (e) => {
 
   // Los botones:
   const editBtn = document.createElement("button");
-  editBtn.classList.add("edit");
+  const editClass = editBtn.classList;
+  editClass.add("edit");
 
   const scrapBtn = document.createElement("button");
-  scrapBtn.classList.add("scrap");
+  const scrapClass = scrapBtn.classList;
+  scrapClass.add("scrap");
 
   const eraseBtn = document.createElement("button");
-  eraseBtn.classList.add("erase");
+  const eraseClass = eraseBtn.classList;
+  eraseClass.add("erase");
 
   // A "appendear" botones:
   //! Padre.método(Hijo):
   taskBtns.appendChild(editBtn);
   taskBtns.appendChild(scrapBtn);
   taskBtns.appendChild(eraseBtn);
-
   taskElement.appendChild(taskBtns);
+
+  // "addEventListener" para los botones:
+  // "Función" para convertir el "lapicito" en un "botón de grabar" y modificar el texto del "input":
+  editBtn.addEventListener("click", () => {
+    // Para cambiar el "ícono":
+    editClass.toggle("edit");
+    editClass.toggle("save");
+
+    if (editClass.contains("save")) {
+      // Ahora vamos a afectar al "taskInput":
+      taskInput.removeAttribute("readonly");
+      taskInput.focus();
+    } else {
+      taskInput.setAttribute("readonly", "readonly");
+    }
+  });
+  scrapBtn.addEventListener("click", () => {
+    scrapClass.toggle("scrap");
+    scrapClass.toggle("notDone");
+    // "taskInput":
+    taskInput.classList.toggle("done");
+  });
+  eraseBtn.addEventListener("click", () => {
+    tasksList.removeChild(taskElement);
+  });
 });
